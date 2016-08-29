@@ -1,0 +1,12 @@
+---
+"extends":
+  - "formidable/configurations/es6-node"
+  - "formidable/configurations/es6-react"
+"env":
+  "browser": true
+  "node": true
+  "mocha": true
+"globals":
+  "expect": true
+"rules":
+  "no-console": 0

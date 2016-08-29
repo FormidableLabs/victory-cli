@@ -1,0 +1,12 @@
+{
+  "presets": [
+    "babel-preset-es2015",
+    "babel-preset-stage-0",
+    "babel-preset-react",
+  ],
+  "env": {
+    "coverage": {
+      "plugins": [ [ "istanbul", { "ignore": "test" } ] ]
+    }
+  }
+}
