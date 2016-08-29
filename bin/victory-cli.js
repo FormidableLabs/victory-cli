@@ -22,7 +22,7 @@ program.option(
   "'area', 'bar', 'line', 'scatter' or 'pie'",
   "line"
 );
-program.option("-f, --format [format]", "png' or 'svg'", "png");
+program.option("-f, --format [format]", "'png' or 'svg'", "png");
 program.option("-p, --print", "Prints chart to console (iTerm3 & .png format only!)");
 program.option("-h, --h [h]", "Chart height", DEFAULT_DIMENSIONS);
 program.option("-w, --w [w]", "Chart width", DEFAULT_DIMENSIONS);
@@ -33,7 +33,9 @@ program.option("-t, --theme [theme]", "'light', 'dark' or 'hacker'", "hacker");
 program.usage("[data] [script] [options]");
 program.parse(process.argv);
 
-if (program.rawArgs.length < 3) {
+const MIN_ARGS = 3;
+
+if (program.rawArgs.length < MIN_ARGS) {
   program.outputHelp();
   return;
 }

@@ -10,3 +10,4 @@
   "expect": true
 "rules":
   "no-console": 0
+  "strict": 0

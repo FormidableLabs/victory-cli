@@ -4,7 +4,6 @@ const React = require("react");
 const Victory = require("victory");
 
 const {
-  VictoryAxis,
   VictoryChart,
   VictoryScatter,
   VictoryLine,
@@ -32,7 +31,7 @@ module.exports = function wrapperComponent(data, options) {
             data={data}
             style={{
               data: {
-                fill: "#e74c3c",
+                fill: "#e74c3c"
               }
             }}
           />

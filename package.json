@@ -1,6 +1,6 @@
 {
   "name": "victory-cli",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A tool for generating charts on the command line.",
   "bin": "bin/victory-cli.js",
   "scripts": {
@@ -17,8 +17,8 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.14.0",
     "commander": "^2.9.0",
+    "librsvg": "^0.7.0",
     "lodash": "^4.15.0",
-    "phantomjs2": "^2.2.0",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "term-img": "^0.2.0",
