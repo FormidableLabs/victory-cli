@@ -1,6 +1,6 @@
 {
   "name": "victory-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A tool for generating charts on the command line.",
   "bin": "bin/victory-cli.js",
   "scripts": {
