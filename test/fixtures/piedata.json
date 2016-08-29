@@ -1,0 +1,11 @@
+{
+  "data": [
+    { "x": "Apples", "y": 5 },
+    { "x": "Oranges", "y": 20 },
+    { "x": "Grapes", "y": 4 },
+    { "x": "Strawberries", "y": 15 },
+    { "x": "Blackberries", "y": 12 },
+    { "x": "Bananas", "y": 19 },
+    { "x": "Mangos", "y": 7 }
+  ]
+}

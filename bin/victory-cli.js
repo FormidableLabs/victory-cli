@@ -33,7 +33,7 @@ program.option("-t, --theme [theme]", "'light', 'dark' or 'hacker'", "hacker");
 program.usage("[data] [script] [options]");
 program.parse(process.argv);
 
-if (!program.args.length) {
+if (program.rawArgs.length < 3) {
   program.outputHelp();
   return;
 }
@@ -52,8 +52,22 @@ const cliOptions = {
 const DATA_ARG = 0;
 const SCRIPT_ARG = 1;
 
-const dataPath = path.join(process.cwd(), program.args[DATA_ARG]);
-const data = require(dataPath);
+let data;
+
+if (program.args[DATA_ARG]) {
+  const dataPath = path.join(process.cwd(), program.args[DATA_ARG]);
+  data = require(dataPath);
+} else {
+  data = {
+    data: [
+      { x: 0, y: 10 },
+      { x: 5, y: 20 },
+      { x: 10, y: 30 },
+      { x: 15, y: 40 },
+      { x: 20, y: 50 }
+    ]
+  };
+}
 
 let component;
 
@@ -74,7 +88,9 @@ if (cliOptions.format === "svg") {
   generatePng(SVG, cliOptions)
   .then((output) => {
     if (cliOptions.print) {
-      termIMG(output);
+      termIMG(output, {
+        fallback: () => console.log("Printing images is only supported in the latest iTerm!")
+      });
     } else {
       process.stdout.write(output);
     }
