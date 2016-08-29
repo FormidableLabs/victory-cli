@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 "use strict";
 
-require("babel-register");
+require("babel-register")({
+  ignore: /victory-cli\/node_modules/
+});
 
 const path = require("path");
 const commander = require("commander");
