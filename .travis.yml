@@ -6,7 +6,7 @@ node_js:
   - 6
 
 # Use container-based Travis infrastructure.
-sudo: false
+sudo: required
 
 branches:
   only:
@@ -19,7 +19,7 @@ notifications:
     on_failure: always
 
 before_install:
-  - apt-get install librsvg2-dev
+  - sudo apt-get install librsvg2-dev
   - npm install -g npm@3
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
