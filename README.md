@@ -222,6 +222,10 @@ And its custom chart city:
 
 Victory requires npm v3 and Node > 0.10 for development and git installs
 
+## Credits
+
+This project was HEAVILY inspired by Matthew Conlens work on [https://github.com/mathisonian/hyperchart](https://github.com/mathisonian/hyperchart)
+
 ## _IMPORTANT_
 
 This project is in a pre-release state. We're hard at work fixing bugs and improving the API. Be prepared for breaking changes!
