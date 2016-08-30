@@ -59,7 +59,7 @@ const SCRIPT_ARG = 1;
 let data;
 
 if (program.args[DATA_ARG]) {
-  const dataPath = path.join(process.cwd(), program.args[DATA_ARG]);
+  const dataPath = path.resolve(program.args[DATA_ARG]);
   data = require(dataPath);
 } else {
   data = {
@@ -76,7 +76,7 @@ if (program.args[DATA_ARG]) {
 let component;
 
 if (program.args[SCRIPT_ARG] !== undefined) {
-  const scriptPath = path.join(process.cwd(), program.args[SCRIPT_ARG]);
+  const scriptPath = path.resolve(program.args[SCRIPT_ARG]);
   const script = require(scriptPath);
 
   component = script(data.data, cliOptions);
