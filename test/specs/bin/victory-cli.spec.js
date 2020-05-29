@@ -1,20 +1,20 @@
-/* eslint-disable */
-"use strict";
-
+/* eslint-disable no-magic-numbers */
+/* eslint-disable no-invalid-this */
+/* eslint-disable max-nested-callbacks */
 const childProcess = require("child_process");
 const path = require("path");
 
 const bin = path.join("./bin/victory-cli.js");
 
-describe("victory-cli", function() {
-  describe("help", function() {
+describe("victory-cli", () => {
+  describe("help", () => {
     let stdoutValue;
     this.timeout(5000);
 
     before((done) => {
       childProcess.execFile(bin, (error, stdout, stderr) => {
         if (error) {
-          console.log(err, stderr, stdout)
+          console.log(error, stderr, stdout);
           done(error);
         }
         stdoutValue = stdout;
@@ -27,12 +27,12 @@ describe("victory-cli", function() {
     });
   });
 
-  describe("print", function() {
+  describe("print", () => {
     let stdoutValue;
     this.timeout(15000);
 
     before((done) => {
-      childProcess.execFile(bin, (error, stdout, stderr) => {
+      childProcess.execFile(bin, (error, stdout) => {
         if (error) {
           done(error);
         }

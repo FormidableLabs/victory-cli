@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 "use strict";
 
 require("babel-register")({
@@ -25,7 +26,10 @@ program.option(
   "line"
 );
 program.option("-f, --format [format]", "'png' or 'svg'", "png");
-program.option("-p, --print", "Prints chart to console (iTerm3 & .png format only!)");
+program.option(
+  "-p, --print",
+  "Prints chart to console (iTerm3 & .png format only!)"
+);
 program.option("-h, --h [h]", "Chart height", DEFAULT_DIMENSIONS);
 program.option("-w, --w [w]", "Chart width", DEFAULT_DIMENSIONS);
 program.option("-x, --x [x]", "Data x value");
@@ -64,11 +68,16 @@ if (program.args[DATA_ARG]) {
 } else {
   data = {
     data: [
-      { x: 0, y: 10 },
-      { x: 5, y: 20 },
-      { x: 10, y: 30 },
-      { x: 15, y: 40 },
-      { x: 20, y: 50 }
+      { x: 0,
+        y: 10 },
+      { x: 5,
+        y: 20 },
+      { x: 10,
+        y: 30 },
+      { x: 15,
+        y: 40 },
+      { x: 20,
+        y: 50 }
     ]
   };
 }
@@ -90,16 +99,19 @@ if (cliOptions.format === "svg") {
   process.stdout.write(SVG);
 } else {
   generatePng(SVG, cliOptions)
-  .then((output) => {
-    if (cliOptions.print) {
-      termIMG(output, {
-        fallback: () => console.log("Printing images is only supported in the latest iTerm!")
-      });
-    } else {
+    .then((output) => {
+      if (cliOptions.print) {
+        termIMG(output, {
+          fallback: () =>
+            console.log(
+              "Printing images is only supported in the latest iTerm!"
+            )
+        });
+      }
+
       process.stdout.write(output);
-    }
-  })
-  .catch((err) => {
-    throw new Error(err);
-  });
+    })
+    .catch((err) => {
+      throw new Error(err);
+    });
 }
