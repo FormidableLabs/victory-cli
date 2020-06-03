@@ -19,6 +19,7 @@
     "commander": "^5.1.0",
     "librsvg": "^0.7.0",
     "lodash": "^4.15.0",
+    "phantom": "^6.3.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "term-img": "^5.0.0",
