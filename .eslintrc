@@ -2,6 +2,9 @@
 "extends":
   - "formidable/configurations/es6-node"
   - "formidable/configurations/es6-react"
+"settings":
+  "react":
+    "version": "detect"
 "env":
   "browser": true
   "node": true
