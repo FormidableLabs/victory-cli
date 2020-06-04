@@ -15,12 +15,10 @@
     "babel-preset-react": "^6.11.1",
     "babel-register": "^6.14.0",
     "commander": "^5.1.0",
-    "librsvg": "^0.7.0",
     "lodash": "^4.15.0",
     "phantom": "^6.3.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "term-img": "^5.0.0",
     "victory": "^34.3.8"
   },
   "devDependencies": {

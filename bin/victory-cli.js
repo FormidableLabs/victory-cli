@@ -8,9 +8,7 @@ require("babel-register")({
 
 const path = require("path");
 const commander = require("commander");
-const termIMG = require("term-img");
 
-const generatePng = require("../lib/generate-png.js");
 const generateSvg = require("../lib/generate-svg.js");
 const wrapperComponent = require("../lib/wrapper-component.js");
 
@@ -24,11 +22,6 @@ program.option(
   "-c, --charttype [charttype]",
   "'area', 'bar', 'line', 'scatter' or 'pie'",
   "line"
-);
-program.option("-f, --format [format]", "'png' or 'svg'", "png");
-program.option(
-  "-p, --print",
-  "Prints chart to console (iTerm3 & .png format only!)"
 );
 program.option("-h, --h [h]", "Chart height", DEFAULT_DIMENSIONS);
 program.option("-w, --w [w]", "Chart width", DEFAULT_DIMENSIONS);
@@ -48,8 +41,6 @@ if (program.rawArgs.length < MIN_ARGS) {
 
 const cliOptions = {
   charttype: program.charttype,
-  format: program.format,
-  print: program.print,
   height: program.h,
   width: program.w,
   x: program.x,
@@ -94,24 +85,4 @@ if (program.args[SCRIPT_ARG] !== undefined) {
 }
 
 const SVG = generateSvg(component);
-
-if (cliOptions.format === "svg") {
-  process.stdout.write(SVG);
-} else {
-  generatePng(SVG, cliOptions)
-    .then((output) => {
-      if (cliOptions.print) {
-        termIMG(output, {
-          fallback: () =>
-            console.log(
-              "Printing images is only supported in the latest iTerm!"
-            )
-        });
-      }
-
-      process.stdout.write(output);
-    })
-    .catch((err) => {
-      throw new Error(err);
-    });
-}
+process.stdout.write(SVG);

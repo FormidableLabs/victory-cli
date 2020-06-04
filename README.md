@@ -16,62 +16,22 @@
 </p>
 
 <h4 align="center">
-  A tool for generating <a href="https://github.com/FormidableLabs/victory/">Victory</a> component image charts on the command line.
+  A tool for generating <a href="https://github.com/FormidableLabs/victory/">Victory</a> chart svgs from the command line.
 </h4>
 
 ---
 
 ## Installation
 
-First, install `librsvg`, which is a dependency for this library to work. **THIS IS IMPORTANT**:
-
-If you do not install `librsvg` first, the global install _will blow up_.
-
-#### Ubuntu:
-
-```bash
-sudo apt-get install librsvg2-dev
-```
-
-#### RedHat / OpenSUSE:
-
-```bash
-sudo yum install librsvg2-devel
-```
-
-#### Mac OS X:
-
-```bash
-brew install librsvg
-```
-
-If, after installing LibRSVG through homebrew you are experiencing issues installing this module,
-try manually exporting the package config with this command:
-
-```bash
-export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig
-```
-
-Then, install this module.
-
 ```sh
-npm install -g victory-cli
+$ npm install -g victory-cli
+# or, using yarn
+$ yarn global add victory-cli
 ```
-
-For further information, [see this thread](https://github.com/Homebrew/homebrew/issues/14123).
-
-#### Windows:
-
-You will need cairo and librsvg-2 libraries which is bundled in GTK. Go to http://www.gtk.org/download/win64.php
-(or http://www.gtk.org/download/win32.php for 32-bit node) and download the all-in-one bundle (these instructions
-used the following zip http://win32builder.gnome.org/gtk+-bundle_3.6.4-20131201_win64.zip). Unzip the contents
-in C:\GTK (if you want to change this you must define `-GTK_Root=c:\another\path` shell variable to npm or node-gyp
-to reflect your changes), and add `"C:\GTK\bin;"` to the PATH environment variable in Windows, it's necessary for
-node-rsvg runtime to load those libs.
 
 ## Usage
 
-Once installed, you can now run `victory-cli` from the command line. Check out the usage info below to
+Once installed, you can run `victory-cli` from the command line. Check out the usage info below to
 see some of the cool things you can do:
 
 ```sh
@@ -82,8 +42,6 @@ Usage: victory-cli [data] [script] [options]
     -h, --help                   output usage information
     -V, --version                output the version number
     -c, --charttype [charttype]  'area', 'bar', 'line', 'scatter' or 'pie' (default: line)
-    -f, --format [format]        'png' or 'svg' (default: png)
-    -p, --print                  Prints chart to console (iTerm3 & .png format only!) (default: false)
     -h, --h [h]                  Chart height (default: 500)
     -w, --w [w]                  Chart width (default: 500)
     -x, --x [x]                  Data x value (default: null)
@@ -93,35 +51,16 @@ Usage: victory-cli [data] [script] [options]
 
 ### Basic Example
 
-So, like [Victory](https://github.com/FormidableLabs/victory/), `victory-cli` comes with some sensible defaults.
-To render a default line chart to a png, you would run:
+So, like [Victory](https://github.com/FormidableLabs/victory/), `victory-cli` comes with some sensible defaults,
+which includes a default data set.
+
+If you wanted to print a line chart using the default data set to `test.svg`, you could run:
 
 ```sh
-victory-cli -c line > test.png
-```
-
-If you instead wanted an svg file, you could run:
-
-```sh
-victory-cli -c line -f svg > test.svg
+$ victory-cli -c line > test.svg
 ```
 
 You can also use the `-c` flag to select any of our preset charts, detailed in the usage doc above.
-
-### Images in the Term
-
-Generating images is cool, but displaying charts in the terminal is even cooler! By default `victory-cli` writes
-to `stdout`, so you can do things like piping and file output, but you can override this with the `-p` or `--print` flag.
-
-> Note: This only works on iTerm 3. It should work in HyperChart soon.
-
-```sh
-victory-cli -c line --print
-```
-
-💥 Boom:
-
-![http://i.imgur.com/ZF3e5lh.png](http://i.imgur.com/ZF3e5lh.png)
 
 ### Theming
 
@@ -129,7 +68,7 @@ Out of the box we support a light, dark and hacker (green) theme for your charts
 to have the theme applied:
 
 ```sh
-victory-cli -c area -t light --print
+$ victory-cli -c area -t light
 ```
 
 ### Custom Data
@@ -138,7 +77,7 @@ So you brought your own data did ya? Thats cool, its the first argument of this 
 own data in like this:
 
 ```sh
-victory-cli data/data.json --print
+$ victory-cli data/data.json
 ```
 
 We expect the data to be in a regular chart data format like:
@@ -161,7 +100,7 @@ field names. So if your data looks like this:
 It can still work by running:
 
 ```sh
-victory-cli data/data.json -x foo -y bar --print
+$ victory-cli data/data.json -x foo -y bar
 ```
 
 If your data is too different from what we accept, check out how to do a custom component script below.
@@ -220,17 +159,15 @@ module.exports = function wrapperComponent(data, options) {
 After you've created this file, simply run it like this:
 
 ```sh
-victory-cli data.json script.js --print
+$ victory-cli data.json script.js
 ```
 
 💥 And it's custom chart city:
 
 ![http://i.imgur.com/VyB4eqa.png](http://i.imgur.com/VyB4eqa.png)
 
-## Credits
-
-This project was HEAVILY inspired by Matthew Conlens work on [https://github.com/mathisonian/hyperchart](https://github.com/mathisonian/hyperchart)
-
 ## _IMPORTANT_
+
+<img alt="Maintenance Status" src="https://img.shields.io/badge/maintenance-experimental-purple.svg" />
 
 This project is in a pre-release state. We're hard at work fixing bugs and improving the API. Be prepared for breaking changes!
