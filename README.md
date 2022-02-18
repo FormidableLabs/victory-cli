@@ -234,3 +234,8 @@ This project was HEAVILY inspired by Matthew Conlens work on [https://github.com
 ## _IMPORTANT_
 
 This project is in a pre-release state. We're hard at work fixing bugs and improving the API. Be prepared for breaking changes!
+
+
+## Maintenance Status
+
+**Archived:** This project is no longer maintained by Formidable. We are no longer responding to issues or pull requests unless they relate to security concerns. We encourage interested developers to fork this project and make it their own!
